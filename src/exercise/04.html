@@ -11,11 +11,29 @@
 
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+    function Message({subject, greeting}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    }
+    const PropTypes = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error('Some useful error message here')
+        }
+      },
+    }
+    FavoriteNumber.propTypes = {
+      subject: PropTypes.string.isRequired,
+      greeting: PropTypes.string.isRequired,
+    }
     const element = (
-      <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
-      </div>
+      <React.Fragment>
+        <Message greeting="Hello" subject="World" />
+        <Message greeting="Goodbye" subject="World" />
+      </React.Fragment>
     )
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
