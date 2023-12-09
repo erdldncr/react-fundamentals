@@ -11,6 +11,7 @@ function UsernameForm({onSubmitUsername}) {
 
     onSubmitUsername(inputValue)
   }
+  const handleChange = e => setInputValue(e.target.value)
   // 💰 Make sure to accept the `event` as an argument and call
   // `event.preventDefault()` to prevent the default behavior of form submit
   // events (which refreshes the page).
@@ -29,11 +30,7 @@ function UsernameForm({onSubmitUsername}) {
     <form onSubmit={handleSubmit}>
       <div>
         <label>Username:</label>
-        <input
-          onChange={e => setInputValue(e.target.value)}
-          value={inputValue}
-          type="text"
-        />
+        <input onChange={handleChange} value={inputValue} type="text" />
       </div>
       <button disabled={inputValue.toLowerCase() !== inputValue} type="submit">
         Submit
